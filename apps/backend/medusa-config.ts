@@ -37,20 +37,41 @@ module.exports = defineConfig({
         webhookSecret: process.env.STRIPE_CONNECTED_ACCOUNTS_WEBHOOK_SECRET
       }
     },
+    // {
+    //   resolve: '@medusajs/medusa/file',
+    //   options: {
+    //     providers: [
+    //       {
+    //         resolve: '@medusajs/medusa/file-local',
+    //         id: 'local',
+    //         options: {
+    //           backend_url: process.env.BACKEND_URL
+    //         }
+    //       }
+    //     ]
+    //   }
+    // },
     {
-      resolve: '@medusajs/medusa/file',
+      resolve: "@medusajs/medusa/file",
       options: {
         providers: [
           {
-            resolve: '@medusajs/medusa/file-local',
-            id: 'local',
+            resolve: "@medusajs/medusa/file-s3",
+            id: "s3",
             options: {
-              backend_url: process.env.BACKEND_URL
-            }
-          }
-        ]
-      }
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: process.env.S3_REGION,
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
+              // other options...
+            },
+          },
+        ],
+      },
     },
+
     {
       resolve: './src/modules/algolia',
       options: {
@@ -86,6 +107,31 @@ module.exports = defineConfig({
             }
           }
         ]
+      }
+    },
+    {
+      resolve: './modules/company'
+    },
+    {
+      resolve: './modules/quote'
+    },
+    {
+      resolve: './modules/approval'
+    },
+    {
+      resolve: '@medusajs/medusa/cache-redis',
+      options: {
+        redisUrl: process.env.CACHE_REDIS_URL
+      }
+    },
+
+    {
+      resolve: '@medusajs/medusa/workflow-engine-redis'
+    },
+    {
+      resolve: '@medusajs/medusa/event-bus-redis',
+      options: {
+        redisUrl: process.env.EVENTS_REDIS_URL
       }
     }
   ]

@@ -8,6 +8,9 @@ import { returnRequestsMiddlewares } from './return-request/middlewares'
 import { reviewsMiddlewares } from './reviews/middlewares'
 import { sellerMiddlewares } from './sellers/middlewares'
 
+import { adminCompaniesMiddlewares } from "./company/middlewares";
+import { adminQuotesMiddlewares } from "./quotes/middlewares";
+import { adminApprovalsMiddlewares } from "./approvals/middlewares";
 export const adminMiddlewares: MiddlewareRoute[] = [
   ...orderSetsMiddlewares,
   ...requestsMiddlewares,
@@ -15,5 +18,8 @@ export const adminMiddlewares: MiddlewareRoute[] = [
   ...returnRequestsMiddlewares,
   ...commissionMiddlewares,
   ...sellerMiddlewares,
-  ...reviewsMiddlewares
+  ...reviewsMiddlewares,
+    ...adminCompaniesMiddlewares,
+    ...adminQuotesMiddlewares,
+    ...adminApprovalsMiddlewares,
 ]

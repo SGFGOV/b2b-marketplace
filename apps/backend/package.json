@@ -25,7 +25,9 @@
     "format": "prettier --write .",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix ",
-    "generate:oas": "medusa-oas oas --type combined --paths ./src/api"
+    "generate:oas": "medusa-oas oas --type combined --paths ./src/api",
+    "generate:oas:store": "medusa-oas oas --type store --paths ./src/api",
+     "generate:oas:admin": "medusa-oas oas --type admin --paths ./src/api"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.6.1",
@@ -46,7 +48,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
-    "@medusajs/medusa-oas-cli": "2.6.1",
+    "@medusajs/medusa-oas-cli": "^2.6.1",
     "@medusajs/test-utils": "2.6.1",
     "@mikro-orm/cli": "6.4.3",
     "@swc/core": "1.5.7",

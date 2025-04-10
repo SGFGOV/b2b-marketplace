@@ -2,6 +2,10 @@ import { defineConfig, loadEnv } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+const redisURL = `redis://${process.env.REDIS_USERNAME}:${process.env.REDIS_PASSWORD}@${
+  process.env.REDIS_HOST || 'localhost'}:${
+  process.env.REDIS_PORT || '6379'}`
+
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
@@ -121,17 +125,24 @@ module.exports = defineConfig({
     {
       resolve: '@medusajs/medusa/cache-redis',
       options: {
-        redisUrl: process.env.CACHE_REDIS_URL
+        redisUrl: redisURL,
+        password: process.env.REDIS_PASSWORD,
       }
     },
 
     {
-      resolve: '@medusajs/medusa/workflow-engine-redis'
+      resolve: '@medusajs/medusa/workflow-engine-redis',
+      options: {
+        redis:{
+        url: redisURL,
+        password: process.env.REDIS_PASSWORD,
+      }}
     },
     {
       resolve: '@medusajs/medusa/event-bus-redis',
       options: {
-        redisUrl: process.env.EVENTS_REDIS_URL
+        redisUrl: redisURL,
+        password: process.env.REDIS_PASSWORD,
       }
     }
   ]

@@ -2285,7 +2285,7 @@
   resolved "https://registry.yarnpkg.com/@medusajs/locking/-/locking-2.6.1.tgz#579653eba561f5a4a4228f8b3fd7e510dd669242"
   integrity sha512-q07n3nz219Ed3DkxPN7iHDHLqahGQYmbTSt/pS6ciPnKIUZ3UQVWdVj/Ktlo6JSAErnR6NKOZPb57hyLeedlrQ==
 
-"@medusajs/medusa-oas-cli@2.6.1":
+"@medusajs/medusa-oas-cli@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@medusajs/medusa-oas-cli/-/medusa-oas-cli-2.6.1.tgz#586ef073d0b18ede1f6204bf5e2bc344dad5ab32"
   integrity sha512-85fNxiVWSqbRQVI6nhwYlRpRC/hCqKP0jZk3jOQuAl3kUj0UzEDXbqpbDaySyGwoUQdFUBH/bDB1rmsq1rkDHQ==
